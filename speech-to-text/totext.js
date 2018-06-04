@@ -35,7 +35,7 @@ function convert(fileName) {
   const config = {
     encoding: 'LINEAR16',
     sampleRateHertz: 16000,
-    languageCode: 'en-GB',
+    languageCode: 'en-US'
   };
   const request = {
     audio: audio,
