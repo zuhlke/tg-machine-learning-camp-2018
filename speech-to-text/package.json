@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "convert": "node convert.js",
-    "totext": "export GOOGLE_APPLICATION_CREDENTIALS=./speech-svc-acc.json && node totext.js"
+    "totext": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node totext.js"
   },
   "author": "",
   "license": "ISC",
