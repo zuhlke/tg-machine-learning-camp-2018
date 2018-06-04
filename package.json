@@ -1,0 +1,26 @@
+{
+  "name": "tg-machine-learning-camp-2018",
+  "version": "1.0.0",
+  "description": "Machine Learning Topic Team",
+  "main": "convert_to_linear16.js",
+  "dependencies": {
+    "linear16": "^1.0.1",
+    "replace-ext": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node convert_to_linear16.js",
+    "sa": "export GOOGLE_APPLICATION_CREDENTIALS=speech-svc-acc.json && python sentiment-analysis/sa.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zuhlke/tg-machine-learning-camp-2018.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zuhlke/tg-machine-learning-camp-2018/issues"
+  },
+  "homepage": "https://github.com/zuhlke/tg-machine-learning-camp-2018#readme"
+}
