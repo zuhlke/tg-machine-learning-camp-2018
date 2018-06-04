@@ -11,9 +11,6 @@ if (!fs.existsSync(convertedDir)){
   fs.mkdirSync(convertedDir);
 }
 
-const resourceFilesDir = path.join(__dirname, 'resources');
-const convertedDir = path.join(__dirname, 'converted');
-
 fs.readdir(resourceFilesDir, (err, files) => {
   files.forEach(file => {
     const newFile = replaceExt(file, '.wav');
