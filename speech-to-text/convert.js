@@ -4,8 +4,12 @@ const fs = require('fs');
 const path = require('path');
 const replaceExt = require('replace-ext');
 
-const resourceFilesDir = path.join(__dirname, 'resources');
+const resourceFilesDir = path.join(__dirname, '../audio');
 const convertedDir = path.join(__dirname, 'converted');
+
+if (!fs.existsSync(convertedDir)){
+  fs.mkdirSync(convertedDir);
+}
 
 fs.readdir(resourceFilesDir, (err, files) => {
   files.forEach(file => {

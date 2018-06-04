@@ -7,6 +7,10 @@ const replaceExt = require('replace-ext');
 const audioDir = path.join(__dirname, 'converted');
 const textDir = path.join(__dirname, 'text');
 
+if (!fs.existsSync(textDir)){
+  fs.mkdirSync(textDir);
+}
+
 // Creates a client
 const client = new speech.SpeechClient({
   keyFilename: path.join(__dirname, "speech-svc-acc.json"),
@@ -31,7 +35,7 @@ function convert(fileName) {
   const config = {
     encoding: 'LINEAR16',
     sampleRateHertz: 16000,
-    languageCode: 'en-US',
+    languageCode: 'en-GB',
   };
   const request = {
     audio: audio,
