@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node convert_to_linear16.js",
-    "sa": "export GOOGLE_APPLICATION_CREDENTIALS=speech-svc-acc.json && python sentiment-analysis/sa.py"
+    "sa": "export GOOGLE_APPLICATION_CREDENTIALS=speech-svc-acc.json && python sentiment-analysis/sa.py",
+    "sa-rest": "export GOOGLE_APPLICATION_CREDENTIALS=speech-svc-acc.json && FLASK_APP=sentiment-analysis/sa-rest.py flask run"
   },
   "repository": {
     "type": "git",
