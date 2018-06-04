@@ -1,0 +1,17 @@
+{
+  "name": "speech-to-text",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "convert": "node convert.js",
+    "totext": "export GOOGLE_APPLICATION_CREDENTIALS=./speech-svc-acc.json && node totext.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/speech": "^1.5.0",
+    "linear16": "^1.0.1",
+    "replace-ext": "^1.0.0"
+  }
+}
