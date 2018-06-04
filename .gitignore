@@ -1,7 +1,13 @@
+# Speech to text conversion artifacts
 speech-to-text/resources
 speech-to-text/converted
 speech-to-text/text
 speech-to-text/speech-svc-acc.json
 speech-to-text/node_modules
+
+# Sentiment Analysis artifacts
+sentiment-analysis/training-data/tweets/*
+
+# Miscellaneous
 node_modules
 speech-svc-acc.json
