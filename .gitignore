@@ -1,0 +1,6 @@
+speech-to-text/resources
+speech-to-text/converted
+speech-to-text/text
+speech-to-text/speech-svc-acc.json
+speech-to-text/node_modules
+node_modules
