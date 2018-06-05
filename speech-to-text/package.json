@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "convert": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node convert.js",
-    "totext": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node totext.js"
+    "totext": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node totext.js",
+    "sentiment": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node sentiment.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/language": "^1.2.0",
     "@google-cloud/speech": "^1.5.0",
     "@google-cloud/storage": "^1.7.0",
     "linear16": "^1.0.1",
