@@ -12,8 +12,6 @@ const outputLocalDir = path.join(__dirname, 'audio-converted');
 const inputRemoteDir = 'audio/original';
 const outputRemoteDir = 'audio/converted';
 
-// convertFiles().then(() => console.log('Done'));
-
 if (fs.existsSync(inputLocalDir)) {
   rimraf.sync(inputLocalDir);
 }
