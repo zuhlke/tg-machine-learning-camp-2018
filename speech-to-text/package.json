@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "convert": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node convert.js",
-    "totext": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node totext.js",
+    "convert": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node convert-audio.js",
+    "totext": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node to-text.js",
     "sentiment": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node sentiment.js",
     "label": "export GOOGLE_APPLICATION_CREDENTIALS=../speech-svc-acc.json && node label.js"
   },
