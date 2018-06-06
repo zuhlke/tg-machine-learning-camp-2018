@@ -5,6 +5,9 @@ const _ = require('lodash');
 const rimraf = require('rimraf');
 const bucketUtils = require('./bucketUtils');
 
+// Change this to false to create a dataset with just positive and negative labels
+const LABEL_NEUTRAL = false;
+
 const inputLocalDir = path.join(__dirname, 'text-sentiment');
 const outputLocalDir = path.join(__dirname, 'text-labelled');
 const inputRemoteDir = 'audio/text-sentiment';
@@ -26,7 +29,6 @@ if (fs.existsSync(outputLocalDir)) {
 fs.mkdir(outputLocalDir);
 
 bucketUtils.downloadAllFiles(inputRemoteDir, inputLocalDir)
-    .then(bucketUtils.deleteAllFiles(outputRemoteDir))
     .then(createLabelledDataFile)
     .then(() => bucketUtils.uploadAllFiles(outputLocalDir, outputRemoteDir, '.csv'))
     .catch(err => console.log(err));
@@ -37,7 +39,8 @@ function createLabelledDataFile() {
     fs.readdir(inputLocalDir, (err, files) => {
         var fileLines = _
             .filter(files, f => path.extname(f) === '.txt')
-            .map(getLabelAndText);
+            .map(fileName => getLabelAndText(fileName))
+            .filter(line => line !== '');
 
         deferred.resolve(Promise.all(fileLines));
     });
@@ -47,7 +50,8 @@ function createLabelledDataFile() {
 
 function writeLines(lines) {
     const deferred = q.defer();
-    fs.writeFile(path.join(outputLocalDir, 'labelled.csv'), lines.join('\n'), function (err) {
+    const outfile = LABEL_NEUTRAL ? 'labelled.csv' : 'labelled-binary.csv';
+    fs.writeFile(path.join(outputLocalDir, outfile), lines.join('\n'), function (err) {
         if (err) {
             console.log('Error writing labelled data set: ', err);
         } else {
@@ -71,12 +75,23 @@ function getLabelAndText(fileName) {
     const sentiment = Number.parseFloat(textParts[0]);
     // Ignore magnitude (textParts[1])
 
-    var label = NEUTRAL_LABEL;
-    if (sentiment > 0.5) {
-        label = POS_LABEL;
-    } else if (sentiment < 0.5) {
-        label = NEG_LABEL;
-    }
+    const createLine = lbl => lbl + delimiter + textParts[2];
 
-    return label + delimiter + textParts[2];
+    if (LABEL_NEUTRAL) {
+        var label = NEUTRAL_LABEL;
+        if (sentiment > 0.5) {
+            label = POS_LABEL;
+        } else if (sentiment < 0.5) {
+            label = NEG_LABEL;
+        }
+        return createLine(label);
+    } else {
+        if (sentiment > 0.0) {
+            return createLine(POS_LABEL);
+        } else if (sentiment < 0.0) {
+            return createLine(NEG_LABEL);
+        } else {
+            return ''; //Ignore completely neutral results
+        }
+    }
 }
