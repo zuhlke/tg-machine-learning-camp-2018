@@ -53,13 +53,20 @@ Input folder: `audio/text-sentiment`
 
 Output folder: `audio/text-labelled`
 
-This takes the sentiment scored text and applies a label based on the following criteria: 
+This takes the sentiment scored text and applies a label based on the following criteria:
 
-+ Sentiment score > 0.5 => Positive
-+ Sentiment score < -0.5 => Negative
-+ Otherwise Neutral
++ If the `LABEL_NEUTRAL` constant near the top of the file is set to true, then:
+    + Sentiment score > 0.5 => Positive
+    + Sentiment score < -0.5 => Negative
+    + Otherwise Neutral
++ If `LABEL_NEUTRAL` is set to false, then:
+    + Sentiment score > 0.0 => Positive
+    + Sentiment score < 0.0 => Negative
+    + Otherwise the text is ignored
 
 The output of the script is a single csv file with a line per review, with fields:
 
 + Sentiment label - 0 (Negative), 2 (Neutral), 4 (Positive)
 + Review text
+
+The name of the file will be either `labelled.csv` (if `LABEL_NEUTRAL` is set to true), or `labelled-binary.csv` (if set to false).
