@@ -9,6 +9,7 @@ speech-to-text/node_modules
 
 # Sentiment Analysis artifacts
 sentiment-analysis/training-data/tweets/*
+sentiment-analysis/.ipynb_checkpoints
 
 # Miscellaneous
 node_modules
